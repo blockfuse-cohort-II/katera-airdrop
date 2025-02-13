@@ -1,7 +1,28 @@
+
+import { useState,useEffect } from 'react';
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+
 import Footer from "./Footer";
 import { motion } from "framer-motion";
 
+
 const Body = () => {
+  const { address } = useAccount(); 
+  const [userAddress, setUserAddress] = useState(""); 
+
+  useEffect(() => {
+      if (address) {
+          setUserAddress(address);
+      }
+  }, [address]); 
+
+  const handleClick = (e) => {
+      e.preventDefault();
+      console.log("User address:", userAddress);
+  };
+
+
+
   return (
     <div>
       <div className="min-h-screen flex flex-col">

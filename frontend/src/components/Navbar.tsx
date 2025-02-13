@@ -1,6 +1,8 @@
+
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import logo from "../assets/logo2.png";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+
 
 const Navbar = () => {
   return (
@@ -16,20 +18,8 @@ const Navbar = () => {
         </div>
       </div>
       <div className="self-center">
-        <motion.button
-          className="bg-violet-500 lg:px-5 lg:py-2  py-1 px-2  rounded text-sm font-semibold text-white"
-          whileHover={{
-            scale: 1.05, // Slightly enlarges on hover
-            backgroundColor: "#4F46E5", // Changes color on hover
-            boxShadow: "0px 10px 20px rgba(79, 70, 229, 0.3)", // Adds a glow effect
-          }}
-          whileTap={{
-            scale: 0.9, // Shrinks slightly on click
-          }}
-          transition={{ type: "spring", stiffness: 300 }}
-        >
-          Connect wallet
-        </motion.button>
+    
+        <ConnectButton/>
       </div>
     </div>
   );
