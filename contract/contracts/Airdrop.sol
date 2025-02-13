@@ -4,6 +4,8 @@ pragma solidity ^0.8.28;
 // Uncomment this line to use console.log
 // import "hardhat/console.sol";
 
+import {IERC20} from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
 contract Airdrop {
     address public tokenAddress;
     bytes merkleRoot;
@@ -30,5 +32,8 @@ contract Airdrop {
         }
         require(keccak256(hashedAllocation) == merkleRoot, "Invalid proof");
         claimed[msg.sender] = true;
+
+        // Transfer tokens
+        IERC20(tokenAddress).transfer(msg.sender, _amount);
     }
 }
