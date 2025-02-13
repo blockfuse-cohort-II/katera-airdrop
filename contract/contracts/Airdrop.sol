@@ -25,12 +25,12 @@ contract Airdrop {
         bytes memory hashedAllocation = keccak256(abi.encodePacked(_amount, msg.sender));
         for (uint i = 0; i < proofs.length; i++) {
             if (proofs[i].isLeft) {
-                hashedAllocation = abi.encodePacked(proofs[i].amount, hashedAllocation);
+                hashedAllocation = keccak256(abi.encodePacked(proofs[i].amount, hashedAllocation));
             } else {
-                hashedAllocation = abi.encodePacked(hashedAllocation, proofs[i].amount);
+                hashedAllocation = keccak256(abi.encodePacked(hashedAllocation, proofs[i].amount));
             }
         }
-        require(keccak256(hashedAllocation) == merkleRoot, "Invalid proof");
+        require(hashedAllocation == merkleRoot, "Invalid proof");
         claimed[msg.sender] = true;
 
         // Transfer tokens
