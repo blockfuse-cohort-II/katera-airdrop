@@ -1,6 +1,7 @@
 import "./App.css";
-import Body from "./components/Body";
-import Navbar from "./components/Navbar";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Claim from "./pages/Claim";
 import { http, createConfig } from "wagmi";
 import '@rainbow-me/rainbowkit/styles.css';
 
@@ -31,17 +32,24 @@ const config = createConfig({
   },
 });
 
+   
+
 function App() {
   const queryClient = new QueryClient()
   return (
-    <WagmiProvider config={config}>
+    <div className="">
+       <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
         <RainbowKitProvider>
-           <Navbar/>
-           <Body/>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/claim-airdrop" element={<Claim />} />
+          </Routes>
         </RainbowKitProvider>
       </QueryClientProvider>
     </WagmiProvider>
+     
+    </div>
   );
 }
 
