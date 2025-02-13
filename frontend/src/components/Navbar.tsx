@@ -18,7 +18,6 @@ const Navbar = () => {
         </div>
       </div>
       <div className="self-center">
-    
         <ConnectButton/>
       </div>
     </div>
