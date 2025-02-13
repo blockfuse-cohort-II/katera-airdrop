@@ -1,4 +1,7 @@
 import logo from "../assets/logo2.png"
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+
 
 const Navbar = () => {
   return (
@@ -8,7 +11,7 @@ const Navbar = () => {
       </div>
 
       <div>
-         <button className="bg-violet-500 px-5 py-3 rounded text-sm font-semibold text-white">Connect wallet</button>
+        <ConnectButton/>
       </div>
     </div>
   )

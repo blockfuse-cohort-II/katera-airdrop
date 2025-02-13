@@ -1,13 +1,32 @@
+import { useState,useEffect } from 'react';
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+
 const Body = () => {
+  const { address } = useAccount(); 
+  const [userAddress, setUserAddress] = useState(""); 
+
+  useEffect(() => {
+      if (address) {
+          setUserAddress(address);
+      }
+  }, [address]); 
+
+  const handleClick = (e) => {
+      e.preventDefault();
+      console.log("User address:", userAddress);
+  };
+
+
+
   return (
     <div>
       <div>
-        <form action="">
+        <form>
           <div>
             <input type="text" />
           </div>
           <div>
-            <button>Claim Airdrop</button>
+            <button onClick={handleClick}>Claim Airdrop</button>
           </div>
         </form>
       </div>
