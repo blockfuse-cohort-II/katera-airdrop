@@ -2,7 +2,6 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import logo from "../assets/logo2.png";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 
 
 const Navbar = () => {
