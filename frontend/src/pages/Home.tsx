@@ -17,7 +17,7 @@ const Home = () => {
           <div className="self-center lg:pt-0 pt-28">
             <div className="text-white">
               <h1 className="text-violet-500 font-semibold text-5xl">
-                Katera Wallet
+                Katera Airdrop
               </h1>
               <p className="text-lg mt-3 ">
                 Claim your free airdrop now—connect your wallet and grab your
