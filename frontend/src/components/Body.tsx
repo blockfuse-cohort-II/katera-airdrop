@@ -1,15 +1,19 @@
 
 import { useState,useEffect, ChangeEvent } from 'react';
-import { useAccount, useDisconnect, useEnsAvatar, useEnsName } from 'wagmi';
+import { useAccount, useDisconnect, useEnsAvatar, useEnsName, useWriteContract } from 'wagmi';
+import { airdropAbi } from "../utils/contracts";
 
 import Footer from "./Footer";
 import { motion } from "framer-motion";
 
+const contractAddress = process.env.VITE_PUBLIC_AIRDROP_CONTRACT;
 
 const Body = () => {
   const { address } = useAccount(); 
   const [userAddress, setUserAddress] = useState(""); 
   const [amount, setAmount]=useState("");
+
+  const { writeContract: claimAirdrop } = useWriteContract();
 
   useEffect(() => {
       if (address) {
@@ -24,8 +28,10 @@ const Body = () => {
 
   const handleClick = (e) => {
       e.preventDefault();
-      console.log("User address:", userAddress);
+      console.log("User address:", contractAddress);
       console.log(amount)
+      const formattedAddress = userAddress as `0x${string}`;
+      claimAirdrop({address: formattedAddress, abi: airdropAbi, functionName: "claim", args: [amount]});
       setAmount("")
   };
 
